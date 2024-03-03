@@ -8,12 +8,28 @@ services:
       - db_data:/var/lib/postgresql/data
     env_file:
       - '.env'
+  back:
+    build: ./back
+    command: bash -c "rm -f tmp/pids/server/pid && bundle exec rails s -b '0.0.0.0'"
+    volumes:
+      - ./back:/back
+    ports:
+      - 3000:3000
+    depends_on:
+      - database
+    env_file:
+      - '.env'
+    stdin_open: true
+    tty: true
+
   front:
     build: ./front
     ports:
       - 8080:8080
     tty: true
     stdin_open: true
+    depends_on:
+      - back
     volumes:
       - ./front:/front
       - /front/node_modules
