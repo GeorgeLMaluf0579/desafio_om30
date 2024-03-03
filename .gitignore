@@ -1,3 +1,17 @@
+.DS_Store
+/front/*/**.DS_Store
+/front/logs
+/front/*.log
+/front/npm-debug.log*
+/front/yarn-debug.log*
+/front/yarn-error.log*
+/front/node_modules
+/front/dist
+/front/dist-ssr
+/front/*.local
+/front/.vscode/*
+/front/coverage
+
 *.gem
 *.rbc
 /.config

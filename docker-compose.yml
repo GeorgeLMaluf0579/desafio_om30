@@ -8,6 +8,15 @@ services:
       - db_data:/var/lib/postgresql/data
     env_file:
       - '.env'
+  front:
+    build: ./front
+    ports:
+      - 8080:8080
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./front:/front
+      - /front/node_modules
 
 volumes:
   db_data:
