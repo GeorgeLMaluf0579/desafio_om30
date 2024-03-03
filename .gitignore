@@ -25,6 +25,9 @@
 /back/test/tmp/
 /back/test/version_tmp/
 /back/tmp/
+!/back/log/.keep
+/back/log/*
+
 
 # Used by dotenv library to load environment variables.
 # .env
