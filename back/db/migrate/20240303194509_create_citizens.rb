@@ -7,7 +7,7 @@ class CreateCitizens < ActiveRecord::Migration[6.1]
       t.string :email
       t.date   :birth_date
       t.string :phone
-      t.boolean :status
+      t.integer :status
 
       t.timestamps
     end

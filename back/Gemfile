@@ -24,9 +24,11 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
+gem 'cpf_cnpj'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'cpf_faker'
   gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'rubocop-performance', require: false
@@ -44,6 +46,7 @@ end
 group :test do
   gem 'database_cleaner-active_record'
   gem 'faker'
+  gem 'shoulda-matchers'
   gem 'simplecov'
 end
 
