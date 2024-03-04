@@ -7,10 +7,9 @@ Rails.application.configure do
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
-
-  ENV["ELASTICSEARCH_URL"] = "http://elastic-om30:9200"
+  
   config.elasticsearch_logger = Logger.new('log/elasticsearch.log')
-  Elasticsearch::Model.client = Elasticsearch::Client.new host: 'elastic-om30:9200', logger: config.elasticsearch_logger
+  Elasticsearch::Model.client = Elasticsearch::Client.new host: 'localhost:9200', logger: config.elasticsearch_logger
 
   # Do not eager load code on boot.
   config.eager_load = false
