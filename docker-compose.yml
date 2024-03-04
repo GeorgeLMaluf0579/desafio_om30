@@ -8,6 +8,14 @@ services:
       - db_data:/var/lib/postgresql/data
     env_file:
       - '.env'
+  elastic:
+    image: elasticsearch:7.12.1
+    container_name: elastic-om30
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - discovery.type=single-node
   back:
     build: ./back
     command: bash -c "rm -f tmp/pids/server/pid && bundle exec rails s -b '0.0.0.0'"
@@ -17,6 +25,7 @@ services:
       - 3000:3000
     depends_on:
       - database
+      - elastic
     env_file:
       - '.env'
     stdin_open: true

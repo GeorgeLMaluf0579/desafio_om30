@@ -15,3 +15,5 @@ FactoryBot.reload
 10.times do
   FactoryBot.create(:citizen)
 end
+
+Citizen.reindex

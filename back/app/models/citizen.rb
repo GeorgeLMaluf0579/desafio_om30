@@ -1,4 +1,6 @@
 class Citizen < ApplicationRecord
+  searchkick word_start: %i[full_name cpf cns]
+
   enum status: %i[active unactive]
   validates :full_name, :cpf, :cns, :email, :birth_date, :phone, :status, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, 
