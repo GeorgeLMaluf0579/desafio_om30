@@ -871,3 +871,119 @@ Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 1.1ms | Allocations: 3932)
 Completed 200 OK in 24ms (Views: 16.7ms | ActiveRecord: 7.5ms | Allocations: 8446)
 
 
+Started GET "/api/v1/citizens" for 192.168.80.1 at 2024-03-04 11:26:04 +0000
+Started GET "/api/v1/citizens" for 192.168.80.1 at 2024-03-04 11:26:04 +0000
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::CitizensController#index as HTML
+Processing by Api::V1::CitizensController#index as HTML
+  [1m[36mCitizen Load (1.6ms)[0m  [1m[34mSELECT "citizens".* FROM "citizens"[0m
+  ↳ app/controllers/api/v1/citizens_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.44ms)
+Completed 200 OK in 35ms (Views: 20.8ms | ActiveRecord: 7.6ms | Allocations: 16364)
+
+
+  [1m[36mCitizen Load (1.0ms)[0m  [1m[34mSELECT "citizens".* FROM "citizens"[0m
+  ↳ app/controllers/api/v1/citizens_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.99ms)
+Completed 200 OK in 42ms (Views: 23.0ms | ActiveRecord: 12.1ms | Allocations: 19516)
+
+
+Started GET "/api/v1/citizens" for 192.168.80.1 at 2024-03-04 11:26:54 +0000
+Started GET "/api/v1/citizens" for 192.168.80.1 at 2024-03-04 11:26:54 +0000
+Processing by Api::V1::CitizensController#index as HTML
+Processing by Api::V1::CitizensController#index as HTML
+  [1m[36mCitizen Load (0.7ms)[0m  [1m[34mSELECT "citizens".* FROM "citizens"[0m
+  ↳ app/controllers/api/v1/citizens_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.84ms)
+  [1m[36mCitizen Load (3.9ms)[0m  [1m[34mSELECT "citizens".* FROM "citizens"[0m
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.7ms | Allocations: 3284)
+
+
+  ↳ app/controllers/api/v1/citizens_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.7ms)
+Completed 200 OK in 12ms (Views: 7.5ms | ActiveRecord: 3.9ms | Allocations: 5516)
+
+
+Started GET "/api/v1/citizens" for 192.168.80.1 at 2024-03-04 11:27:33 +0000
+Processing by Api::V1::CitizensController#index as HTML
+Started GET "/api/v1/citizens" for 192.168.80.1 at 2024-03-04 11:27:33 +0000
+  [1m[36mCitizen Load (0.8ms)[0m  [1m[34mSELECT "citizens".* FROM "citizens"[0m
+Processing by Api::V1::CitizensController#index as HTML
+  ↳ app/controllers/api/v1/citizens_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.89ms)
+Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.8ms | Allocations: 3474)
+
+
+  [1m[36mCitizen Load (1.4ms)[0m  [1m[34mSELECT "citizens".* FROM "citizens"[0m
+  ↳ app/controllers/api/v1/citizens_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.51ms)
+Completed 200 OK in 16ms (Views: 13.9ms | ActiveRecord: 1.4ms | Allocations: 5003)
+
+
+Started GET "/api/v1/citizens" for 192.168.80.1 at 2024-03-04 11:28:34 +0000
+Processing by Api::V1::CitizensController#index as HTML
+  [1m[36mCitizen Load (0.4ms)[0m  [1m[34mSELECT "citizens".* FROM "citizens"[0m
+  ↳ app/controllers/api/v1/citizens_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (17.16ms)
+Completed 200 OK in 21ms (Views: 20.8ms | ActiveRecord: 0.4ms | Allocations: 2725)
+
+
+Started GET "/api/v1/citizens" for 192.168.80.1 at 2024-03-04 11:28:34 +0000
+Processing by Api::V1::CitizensController#index as HTML
+  [1m[36mCitizen Load (0.3ms)[0m  [1m[34mSELECT "citizens".* FROM "citizens"[0m
+  ↳ app/controllers/api/v1/citizens_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.05ms)
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.3ms | Allocations: 2697)
+
+
+Started GET "/" for 192.168.80.1 at 2024-03-04 11:33:52 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.1.7.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.1.7.7/lib/rails/templates/rails/welcome/index.html.erb (Duration: 12.8ms | Allocations: 504)
+Completed 200 OK in 35ms (Views: 21.4ms | ActiveRecord: 0.0ms | Allocations: 3975)
+
+
+Started GET "/favicon.ico" for 192.168.80.1 at 2024-03-04 11:33:52 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/api/v1/citizens" for 192.168.80.1 at 2024-03-04 11:34:05 +0000
+Processing by Api::V1::CitizensController#index as HTML
+Started GET "/api/v1/citizens" for 192.168.80.1 at 2024-03-04 11:34:05 +0000
+Processing by Api::V1::CitizensController#index as HTML
+  [1m[36mCitizen Load (1.0ms)[0m  [1m[34mSELECT "citizens".* FROM "citizens"[0m
+  ↳ app/controllers/api/v1/citizens_controller.rb:8:in `index'
+  [1m[36mCitizen Load (1.9ms)[0m  [1m[34mSELECT "citizens".* FROM "citizens"[0m
+  ↳ app/controllers/api/v1/citizens_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.99ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.08ms)
+Completed 200 OK in 43ms (Views: 42.2ms | ActiveRecord: 15.6ms | Allocations: 12259)
+
+
+Completed 200 OK in 37ms (Views: 37.1ms | ActiveRecord: 11.6ms | Allocations: 10282)
+
+
+Started GET "/citizens" for 192.168.80.1 at 2024-03-04 12:22:08 +0000
+Started GET "/citizens" for 192.168.80.1 at 2024-03-04 12:22:08 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/citizens"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/citizens"):
+  
+Started GET "/citizens" for 192.168.80.1 at 2024-03-04 12:22:11 +0000
+Started GET "/citizens" for 192.168.80.1 at 2024-03-04 12:22:11 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/citizens"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/citizens"):
+  
+Started GET "/api/v1/citizens" for 192.168.80.1 at 2024-03-04 12:22:31 +0000
+Processing by Api::V1::CitizensController#index as HTML
+  [1m[36mCitizen Load (0.7ms)[0m  [1m[34mSELECT "citizens".* FROM "citizens"[0m
+  ↳ app/controllers/api/v1/citizens_controller.rb:8:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.56ms)
+Completed 200 OK in 28ms (Views: 27.8ms | ActiveRecord: 10.7ms | Allocations: 5590)
+
+
