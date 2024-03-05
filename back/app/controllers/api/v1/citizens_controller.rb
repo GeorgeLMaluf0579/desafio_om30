@@ -9,7 +9,8 @@ module Api
         offset = (params[:offset] || 0).to_i
         limit = (params[:limit] || DEFAULT_PAGE_SIZE).to_i
         query = params[:query] || '*'
-        citizens = Citizen.search(query, limit: limit, offset: offset)
+        order = { full_name: :asc}
+        citizens = Citizen.search(query, limit: limit, offset: offset, order: order)
         render json: {
                       total: citizens.total_count,
                       limit: limit,
