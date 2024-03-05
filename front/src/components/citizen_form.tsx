@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CitizenProps from '../interfaces/Citizen';
 import { Link } from 'react-router-dom';
 
-const CitizenForm: React.FC = () => {
+interface CitizenFormProps {
+  onSubmit: ( formData: CitizenProps) => void;
+  initialData?: CitizenProps;
+}
+
+const CitizenForm: React.FC<CitizenFormProps> = ({onSubmit, initialData}) => {
   const [formData, setFormData] = useState<CitizenProps>({
     id: 0,
     full_name: '',
@@ -12,7 +17,14 @@ const CitizenForm: React.FC = () => {
     birth_date: '',
     phone: '',
     status: 'unactive',
-  })
+    ...initialData,
+  });
+
+  useEffect(() => {
+    if (initialData) {
+      setFormData(initialData)
+    }
+  }, [initialData])
 
   const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     const {name, value, type, checked } = e.target;
@@ -24,8 +36,24 @@ const CitizenForm: React.FC = () => {
     ))
   }
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    onSubmit(formData)
+    setFormData({
+      id: 0,
+      full_name: '',
+      cpf: '',
+      cns: '',
+      email: '',
+      birth_date: '',
+      phone: '',
+      status: 'unactive',
+    }) 
+  }
+
   return(
-    <form className='w3-container w3-light-grey'>
+    <form className='w3-container w3-light-grey' onSubmit={handleSubmit}>
+      <input className='w3-input' name="id" type="hidden" value={formData.id} />
       <fieldset style={{border: "none"}}>
         <label>Nome Completo</label>
         <input className='w3-input w3-border w3-round'

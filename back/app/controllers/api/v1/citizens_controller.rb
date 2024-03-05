@@ -15,6 +15,30 @@ module Api
                       citizens: citizens.to_a
                      }, status: :ok
       end
+
+      def create
+        @citizen = Citizen.new(citizen_params)
+
+        if @citizen.save
+          render json: @citizen, status: :created
+        else
+          render json: @citizen.errors, status: :unprocessable_entity
+        end
+      end
+
+      private
+
+      def citizen_params
+        data = params.require(:citizen).permit(
+          :full_name,
+          :cpf,
+          :cns,
+          :email,
+          :birth_date,
+          :phone,
+          :status
+        )
+      end
     end
   end
 end

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Routes, Route, Outlet, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import 'w3-css/w3.css'
-import { getAllCitizens } from './api/citizens';
+import { getAllCitizens, createCitizen } from './api/citizens';
 import CitizenProps from './interfaces/Citizen'
 import CitizenList from './components/citizen_list';
 import SearchBox from './components/search_box';
@@ -38,6 +38,12 @@ function App() {
       .catch((error) => console.error('Error fetching citizens: ', error));
   }
 
+  const handleCreateCitizen = (formData: CitizenProps) => {
+    createCitizen(formData)
+      .then((response) => {
+      })
+  }
+
   return (
     <div className='w3-container'>
       <h1>Cadastro de Municipes</h1>
@@ -49,7 +55,7 @@ function App() {
               <CitizenList citizens={citizens} />
             </>
           }/>          
-          <Route path='/new' element={<CitizenForm />} />
+          <Route path='/new' element={<CitizenForm onSubmit={handleCreateCitizen} />} />
         </Routes>
       </Router>
     </div>
