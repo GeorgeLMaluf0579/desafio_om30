@@ -10,3 +10,11 @@ export const getAllCitizens = (query: string, limit: number, offset: number) => 
 export const createCitizen = (citizenData: CitizenProps) => {
   return axios.post(`${API_BASE_URL}/citizens`, { citizen: citizenData})
 }
+
+export const updateCitizen = (citizenData: CitizenProps) => {
+  return axios.put(`${API_BASE_URL}/citizens/${citizenData.id}`, { citizen: citizenData})
+}
+
+export const getCitizen = (id: number) => {
+  return axios.get(`${API_BASE_URL}/citizens/${id}`)
+}

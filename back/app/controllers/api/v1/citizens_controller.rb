@@ -3,6 +3,8 @@
 module Api
   module V1
     class CitizensController < ApplicationController
+      before_action :set_citizen, only: %i[show update]
+
       def index
         offset = (params[:offset] || 0).to_i
         limit = (params[:limit] || DEFAULT_PAGE_SIZE).to_i
@@ -26,7 +28,23 @@ module Api
         end
       end
 
+      def show
+        render json: @citizen, status: :ok
+      end
+
+      def update
+        if @citizen.update(citizen_params)
+          render json: @citizen, status: :ok
+        else
+          render json: @citizen.errors, status: :unprocessable_entity
+        end
+      end
+
       private
+
+      def set_citizen
+        @citizen = Citizen.find(params[:id])
+      end
 
       def citizen_params
         data = params.require(:citizen).permit(
@@ -39,6 +57,7 @@ module Api
           :status
         )
       end
+
     end
   end
 end

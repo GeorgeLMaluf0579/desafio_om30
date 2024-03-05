@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
 import 'w3-css/w3.css'
-import { getAllCitizens, createCitizen } from './api/citizens';
+import { getAllCitizens, createCitizen, updateCitizen } from './api/citizens';
 import CitizenProps from './interfaces/Citizen'
 import CitizenList from './components/citizen_list';
 import SearchBox from './components/search_box';
@@ -41,13 +41,27 @@ function App() {
   const handleCreateCitizen = (formData: CitizenProps) => {
     createCitizen(formData)
       .then((response) => {
+        if (response.status === 201) {
+          window.location.href = '/'
+        }
       })
+      .catch((error) => console.error('Error save citizen: ', error))
+  }
+
+  const handleUpdateCitizen = (formData: CitizenProps) => {
+    updateCitizen(formData)
+      .then((response) =>{
+        if (response.status === 200) {
+          window.location.href = '/'
+        }
+      })
+      .catch((error) => console.error('Error update citizen: ', error))
   }
 
   return (
     <div className='w3-container'>
       <h1>Cadastro de Municipes</h1>
-      <Router>
+      <BrowserRouter>
         <Routes>
           <Route path='/' element={
             <>
@@ -56,10 +70,11 @@ function App() {
             </>
           }/>          
           <Route path='/new' element={<CitizenForm onSubmit={handleCreateCitizen} />} />
+          <Route path='/edit/:id' element={<CitizenForm onSubmit={handleUpdateCitizen} />} />
         </Routes>
-      </Router>
+      </BrowserRouter>
     </div>
   )
 }
 
-export default App
+export default App;

@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import CitizenProps from '../interfaces/Citizen';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { getCitizen } from '../api/citizens';
 
 interface CitizenFormProps {
   onSubmit: ( formData: CitizenProps) => void;
   initialData?: CitizenProps;
 }
 
-const CitizenForm: React.FC<CitizenFormProps> = ({onSubmit, initialData}) => {
+const CitizenForm: React.FC<CitizenFormProps> = ({onSubmit}) => {
+  const { id } = useParams()
+
   const [formData, setFormData] = useState<CitizenProps>({
     id: 0,
     full_name: '',
@@ -17,14 +20,16 @@ const CitizenForm: React.FC<CitizenFormProps> = ({onSubmit, initialData}) => {
     birth_date: '',
     phone: '',
     status: 'unactive',
-    ...initialData,
   });
 
   useEffect(() => {
-    if (initialData) {
-      setFormData(initialData)
+    if (id) {
+      getCitizen(parseInt(id, 10))
+        .then((response) => {
+          setFormData(response.data)
+        })
     }
-  }, [initialData])
+  }, [id])
 
   const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     const {name, value, type, checked } = e.target;
