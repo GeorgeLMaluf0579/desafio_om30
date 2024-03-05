@@ -5,7 +5,6 @@ import { getCitizen } from '../api/citizens';
 
 interface CitizenFormProps {
   onSubmit: ( formData: CitizenProps) => void;
-  initialData?: CitizenProps;
 }
 
 const CitizenForm: React.FC<CitizenFormProps> = ({onSubmit}) => {

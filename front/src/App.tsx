@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-
-import 'w3-css/w3.css'
 import { getAllCitizens, createCitizen, updateCitizen } from './api/citizens';
 import CitizenProps from './interfaces/Citizen'
 import CitizenList from './components/citizen_list';
 import SearchBox from './components/search_box';
 import CitizenForm from './components/citizen_form';
+import Pagination from './components/pagination';
+
+import 'w3-css/w3.css'
 
 function App() {
   const [citizens, setCitizens] = useState<CitizenProps[]>([]);
@@ -58,16 +59,42 @@ function App() {
       .catch((error) => console.error('Error update citizen: ', error))
   }
 
+  const handleNextPage = () => {
+    if (!((offset + limit) > total)) {
+      const newOffset = offset + limit
+      setOffset(newOffset)
+      getAllCitizens(query, limit, newOffset)
+        .then((response) => {
+          setCitizens(response.data.citizens)
+        })
+        .catch((error) => console.error('Error fetching citizens: ', error))
+    }
+  }
+
+  const handlePreviuosPage = () => {
+    if (!((offset - limit) < 0)) {
+      const newOffset = offset - limit
+      setOffset(newOffset)
+      getAllCitizens(query, limit, newOffset)
+        .then((response) => {
+          setCitizens(response.data.citizens)
+        })
+        .catch((error) => console.error('Error fetching citizens: ', error))
+    }
+  }
+
   return (
     <div className='w3-container'>
       <h1>Cadastro de Municipes</h1>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={
-            <>
+            <div className='w3-container'>
               <SearchBox onSearchChange={handleSearchChange} /> 
               <CitizenList citizens={citizens} />
-            </>
+              <br />
+              <Pagination total={total} limit={limit} offset={offset} onPrev={handlePreviuosPage} onNext={handleNextPage} />
+            </div>
           }/>          
           <Route path='/new' element={<CitizenForm onSubmit={handleCreateCitizen} />} />
           <Route path='/edit/:id' element={<CitizenForm onSubmit={handleUpdateCitizen} />} />
