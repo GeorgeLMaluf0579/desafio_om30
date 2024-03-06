@@ -35,7 +35,6 @@ module Api
       end
 
       def update
-        byebug
         if @citizen.update(citizen_params)
           render json: @citizen, status: :ok
         else

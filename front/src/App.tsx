@@ -50,7 +50,6 @@ function App() {
   }
 
   const handleUpdateCitizen = (formData: CitizenProps) => {
-    debugger
     updateCitizen(formData)
       .then((response) =>{
         if (response.status === 200) {

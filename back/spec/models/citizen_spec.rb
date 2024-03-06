@@ -7,7 +7,6 @@ RSpec.describe Citizen, type: :model do
 
   describe "Factory Validations" do
     it "factory is valid" do
-      byebug
       expect(citizen).to be_valid
     end
   end

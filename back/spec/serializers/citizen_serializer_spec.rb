@@ -9,6 +9,6 @@ RSpec.describe CitizenSerializer, type: :serializer do
 
   it 'includes the expected attributes' do
     expect(subject.keys).to contain_exactly(:id, :full_name, :cpf, :cns, :email, 
-                                            :birth_date, :phone, :status, :address)
+                                            :birth_date, :phone, :status, :address_attributes)
   end
 end
