@@ -35,6 +35,7 @@ module Api
       end
 
       def update
+        byebug
         if @citizen.update(citizen_params)
           render json: @citizen, status: :ok
         else
@@ -50,13 +51,25 @@ module Api
 
       def citizen_params
         data = params.require(:citizen).permit(
+          :id,
           :full_name,
           :cpf,
           :cns,
           :email,
           :birth_date,
           :phone,
-          :status
+          :status,
+          address_attributes: [
+            :id,
+            :street,
+            :complement,
+            :building_number,
+            :neighborhood,
+            :zip_code,
+            :city,
+            :state,
+            :ibge_code
+          ]
         )
       end
 

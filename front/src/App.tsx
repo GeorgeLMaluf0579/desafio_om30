@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { getAllCitizens, createCitizen, updateCitizen } from './api/citizens';
 import CitizenProps from './interfaces/Citizen'
-import CitizenList from './components/citizen_list';
+import CitizenList from './components/citizenList';
 import SearchBox from './components/search_box';
-import CitizenForm from './components/citizen_form';
+import CitizenForm from './components/citizenForm';
 import Pagination from './components/pagination';
 
 import 'w3-css/w3.css'
@@ -50,6 +50,7 @@ function App() {
   }
 
   const handleUpdateCitizen = (formData: CitizenProps) => {
+    debugger
     updateCitizen(formData)
       .then((response) =>{
         if (response.status === 200) {
