@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_03_03_194509) do
+ActiveRecord::Schema.define(version: 2024_03_05_203537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "street"
+    t.string "building_number"
+    t.string "neighborhood"
+    t.string "complement"
+    t.string "zip_code"
+    t.string "city"
+    t.string "state"
+    t.string "ibge_code"
+    t.bigint "citizen_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["citizen_id"], name: "index_addresses_on_citizen_id"
+  end
 
   create_table "citizens", force: :cascade do |t|
     t.string "full_name"
@@ -27,4 +42,5 @@ ActiveRecord::Schema.define(version: 2024_03_03_194509) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "addresses", "citizens", on_delete: :cascade
 end

@@ -8,6 +8,7 @@ RSpec.describe CitizenSerializer, type: :serializer do
   subject { described_class.new(citizen).as_json }
 
   it 'includes the expected attributes' do
-    expect(subject.keys).to contain_exactly(:id, :full_name, :cpf, :cns, :email, :birth_date, :phone, :status)
+    expect(subject.keys).to contain_exactly(:id, :full_name, :cpf, :cns, :email, 
+                                            :birth_date, :phone, :status, :address)
   end
 end

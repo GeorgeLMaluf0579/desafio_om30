@@ -10,7 +10,8 @@ module Api
         limit = (params[:limit] || DEFAULT_PAGE_SIZE).to_i
         query = params[:query] || '*'
         order = { full_name: :asc}
-        citizens = Citizen.search(query, limit: limit, offset: offset, order: order)
+        citizens = Citizen.search(query, fields: %i[full_name cpf cns],
+                                  match: :word_start, limit: limit, offset: offset, order: order)
         render json: {
                       total: citizens.total_count,
                       limit: limit,
@@ -30,7 +31,7 @@ module Api
       end
 
       def show
-        render json: @citizen, status: :ok
+        render json: @citizen, include: 'address' , status: :ok
       end
 
       def update

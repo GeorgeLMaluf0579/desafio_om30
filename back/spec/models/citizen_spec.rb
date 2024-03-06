@@ -3,9 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe Citizen, type: :model do
+  subject(:citizen) { build :citizen }
+
   describe "Factory Validations" do
     it "factory is valid" do
-      citizen = build(:citizen)
+      byebug
       expect(citizen).to be_valid
     end
   end
